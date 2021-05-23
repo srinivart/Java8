@@ -1,0 +1,167 @@
+Predefined Functional Interfaces
+
+
+
+1) Consumer
+
+2) Predicate 
+
+3) Supplier
+
+
+If you want to play with stream API, 
+you must have to know these 3 functional interface
+
+
+
+Functional Interface:
+--------------------
+
+It will contains only one abstract method
+
+
+1) Consumer Functional Interface
+--------------------------------
+
+@FunctionalInterface
+public interface Consumer<T>{
+
+ void accept(T t);
+}
+--------------------------------
+Consumer<T> is an in built functional interface introduced in Java8
+
+Consumer can be used in all contexts where an object needs to be consumed
+
+i.e taken as input and some operation is to be performed on the object
+    without returning any result
+    
+    
+    
+  --> Performs this operation on the given argument
+  
+     @Param t is the input argument
+     
+     void accept(T t);
+     
+  
+  
+  --> when can we use this Consumer functional interface ?
+  
+  whenever we need object as input , based on that input you want to perform some
+  operation and you don't want to return anything.
+  
+  
+  
+  
+  
+  
+
+ 2) Predicate Functional Interface
+--------------------------------  
+
+ This Functional interface used for conditional check
+ 
+ where you think, we can use these true/false returning functions in day to day programming
+ we should choose predicate
+ 
+ 
+ 
+ 
+ Evaluates this predicate on the given argument
+ 
+ @param t the input argument
+  
+boolean test(T t)
+
+
+--> it is taking one argument 
+and it is type generic, it can be object, int, string or any wrapper class or primitive
+
+
+--> based on the input argument,we do the conditional check and 
+return the boolean
+
+
+--------------------------------
+@FunctionalInterface
+public interface Predicate<T>{
+
+ boolean test(T t);
+}
+--------------------------------
+
+
+
+
+
+ 3) Supplier Functional Interface
+-------------------------------- 
+
+Supplier can be used in all context where there is no input but an output is expected
+
+
+--> 
+Get a result
+@return a result
+
+T get()
+
+
+
+
+--------------------------------
+@FunctionalInterface
+public interface Supplier<T>{
+
+ T get ();
+}
+--------------------------------
+
+ --> where can we use this supplier ?
+ 
+ I have list of elements and doing filter condition 
+ after filter I'm not getting any result, I want to return a dummy result
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Examples: 
+ --------
+ 
+ List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+list.stream().filter(t -> t % 2 == 0).forEach(t -> System.out.println("Even : "+ t));
+		
+ 
+ 
+ --> in filter(), we used Predicate for checking condition
+ 
+ --> in forEach(), we are using Consumer 
+ 
+ 		
+		
+		
+		
+		
+Supplier ex:
+--------------
+
+List<String> list = Arrays.asList();
+
+System.out.println(list.stream().findAny().orElseGet(() -> "Welcome to Java8"));		
+		
+		
+ 
+ 
+ 
+ 
+ 
+ 
+       
